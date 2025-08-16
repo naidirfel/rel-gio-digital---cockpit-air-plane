@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Digital - Cockpit de Avião</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Relógio digital com tema de cockpit de avião - cronômetro, timer e alarme">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+</head>
+<body>
+    <div class="cockpit-container">
+        <!-- Display Principal -->
+        <div class="main-display">
+            <div class="scan-line"></div>
+            <div class="time-display" id="timeDisplay">00:00:00</div>
+            <div class="date-display" id="dateDisplay">Segunda-feira, 1 de Janeiro</div>
+            <div class="mode-indicator" id="modeIndicator">RELÓGIO</div>
+        </div>
+
+        <!-- Instrumentos de Voo -->
+        <div class="flight-instruments">
+            <div class="instrument">
+                <div class="instrument-label">ALT</div>
+                <div class="instrument-value" id="altitude">10,000</div>
+                <div class="instrument-unit">FT</div>
+            </div>
+            <div class="instrument">
+                <div class="instrument-label">HDG</div>
+                <div class="instrument-value" id="heading">270</div>
+                <div class="instrument-unit">°</div>
+            </div>
+            <div class="instrument">
+                <div class="instrument-label">SPD</div>
+                <div class="instrument-value" id="speed">450</div>
+                <div class="instrument-unit">KT</div>
+            </div>
+        </div>
+
+        <!-- Painel de Controles -->
+        <div class="control-panel">
+            <!-- Botões de Modo -->
+            <div class="mode-buttons">
+                <button class="control-btn" id="clockBtn">RELÓGIO</button>
+                <button class="control-btn" id="stopwatchBtn">CRONÔMETRO</button>
+                <button class="control-btn" id="timerBtn">TIMER</button>
+                <button class="control-btn" id="alarmBtn">ALARME</button>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="action-buttons">
+                <button class="action-btn" id="startStopBtn">START</button>
+                <button class="action-btn" id="resetBtn">RESET</button>
+                <button class="action-btn" id="setBtn">SET</button>
+                <button class="action-btn" id="configBtn">CONFIG</button>
+            </div>
+        </div>
+
+        <!-- Painel de Configurações -->
+        <div class="config-panel" id="configPanel">
+            <div class="config-section">
+                <h3>Configurações do Alarme</h3>
+                <div class="config-row">
+                    <label>Horário:</label>
+                    <input type="time" id="alarmTime" value="07:00">
+                </div>
+                <div class="config-row">
+                    <label>Som:</label>
+                    <select id="alarmSound">
+                        <option value="beep">Beep Padrão</option>
+                        <option value="cockpit">Alerta de Cockpit</option>
+                        <option value="radio">Beep de Rádio</option>
+                        <option value="warning">Tom de Aviso</option>
+                        <option value="chime">Chime Suave</option>
+                        <option value="pullup">🚨 PULL UP (Emergência)</option>
+                        <option value="terrain">⛰️ TERRAIN (Terreno)</option>
+                        <option value="bankangle">✈️ BANK ANGLE (Ângulo)</option>
+                        <option value="windshear">💨 WINDSHEAR (Cisalhamento)</option>
+                        <option value="custom">🎵 Arquivo Personalizado</option>
+                    </select>
+                </div>
+                <div class="config-row" id="customAudioRow" style="display: none;">
+                    <label>Selecionar Arquivo:</label>
+                    <div class="custom-audio-controls">
+                        <input type="file" id="customAudioFile" accept=".mp3,.wav,.ogg,.m4a" style="display: none;">
+                        <button type="button" id="selectAudioBtn" class="select-audio-btn">📁 Escolher Música</button>
+                        <button type="button" id="previewAudioBtn" class="preview-audio-btn" style="display: none;">▶️ Testar</button>
+                        <span id="selectedFileName" class="selected-file-name"></span>
+                    </div>
+                </div>
+                <div class="config-row">
+                    <label>Ativo:</label>
+                    <input type="checkbox" id="alarmEnabled">
+                </div>
+            </div>
+
+            <div class="config-section">
+                <h3>Configurações do Timer</h3>
+                <div class="config-row">
+                    <label>Minutos:</label>
+                    <input type="number" id="timerMinutes" min="0" max="59" value="5">
+                </div>
+                <div class="config-row">
+                    <label>Segundos:</label>
+                    <input type="number" id="timerSeconds" min="0" max="59" value="0">
+                </div>
+                <div class="config-row">
+                    <label>Aviso aos:</label>
+                    <input type="number" id="timerWarningTime" min="0" max="300" value="10" placeholder="segundos">
+                    <span style="font-size: 0.8em; color: #00ff00;">seg restantes</span>
+                </div>
+                <div class="config-row">
+                    <label>Som do Aviso:</label>
+                    <select id="timerWarningSound">
+                        <option value="beep">Beep Padrão</option>
+                        <option value="cockpit">Alerta de Cockpit</option>
+                        <option value="warning">Tom de Aviso</option>
+                        <option value="chime">Chime Suave</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="config-section">
+                <h3>Configurações do Cronômetro</h3>
+                <div class="config-row">
+                    <label>Alarme em:</label>
+                    <input type="time" id="stopwatchAlarmTime" value="00:05:00" step="1">
+                </div>
+                <div class="config-row">
+                    <label>Som do Alarme:</label>
+                    <select id="stopwatchAlarmSound">
+                        <option value="beep">Beep Padrão</option>
+                        <option value="cockpit">Alerta de Cockpit</option>
+                        <option value="warning">Tom de Aviso</option>
+                        <option value="chime">Chime Suave</option>
+                    </select>
+                </div>
+                <div class="config-row">
+                    <label>Ativo:</label>
+                    <input type="checkbox" id="stopwatchAlarmEnabled">
+                </div>
+            </div>
+
+            <div class="config-section">
+                <h3>Configurações Gerais</h3>
+                <div class="config-row">
+                    <label>Formato 24h:</label>
+                    <input type="checkbox" id="format24h" checked>
+                </div>
+                <div class="config-row">
+                    <label>Mostrar Segundos:</label>
+                    <input type="checkbox" id="showSeconds" checked>
+                </div>
+            </div>
+
+            <button class="close-config" id="closeConfig">FECHAR</button>
+        </div>
+
+        <!-- LEDs de Status -->
+        <div class="status-leds">
+            <div class="led" id="alarmLed">
+                <div class="led-light"></div>
+                <div class="led-label">ALARM</div>
+            </div>
+            <div class="led" id="timerLed">
+                <div class="led-light"></div>
+                <div class="led-label">TIMER</div>
+            </div>
+            <div class="led" id="batteryLed">
+                <div class="led-light active"></div>
+                <div class="led-label">POWER</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PWA Install Button -->
+    <div id="installPrompt" class="install-prompt" style="display: none;">
+        <button id="installBtn">📱 Instalar App</button>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="alarmAudio" preload="auto"></audio>
+
+    <script src="script.js"></script>
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        const installPrompt = document.getElementById('installPrompt');
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installPrompt.style.display = 'block';
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                deferredPrompt = null;
+                installPrompt.style.display = 'none';
+            }
+        });
+
+        // Handle URL parameters for shortcuts
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode');
+        if (mode && ['stopwatch', 'timer', 'alarm'].includes(mode)) {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const btn = document.querySelector(`[data-mode="${mode}"]`);
+                    if (btn) btn.click();
+                }, 100);
+            });
+        }
+    </script>
+</body>
+</html>

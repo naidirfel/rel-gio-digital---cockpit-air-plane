@@ -1,0 +1,125 @@
+{
+    "name": "Relógio Digital - Cockpit de Avião",
+    "short_name": "CockpitWatch",
+    "description": "Relógio digital com tema de cockpit de avião, incluindo cronômetro, timer e alarme configurável",
+    "version": "1.0.0",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#1a1a1a",
+    "background_color": "#0a0a0a",
+    "scope": "./",
+    "lang": "pt-BR",
+    "categories": ["utilities", "productivity"],
+    "icons": [
+        {
+            "src": "icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshot1.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "platform": "wide",
+            "label": "Tela principal do relógio digital"
+        },
+        {
+            "src": "screenshot2.png",
+            "sizes": "720x1280",
+            "type": "image/png",
+            "platform": "narrow",
+            "label": "Interface do cronômetro"
+        }
+    ],
+    "features": [
+        "Cross Platform",
+        "fast",
+        "simple"
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "shortcuts": [
+        {
+            "name": "Cronômetro",
+            "short_name": "Cronômetro",
+            "description": "Abrir diretamente no modo cronômetro",
+            "url": "./index.html?mode=stopwatch",
+            "icons": [
+                {
+                    "src": "icon-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Timer",
+            "short_name": "Timer",
+            "description": "Abrir diretamente no modo timer",
+            "url": "./index.html?mode=timer",
+            "icons": [
+                {
+                    "src": "icon-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Alarme",
+            "short_name": "Alarme",
+            "description": "Configurar alarme",
+            "url": "./index.html?mode=alarm",
+            "icons": [
+                {
+                    "src": "icon-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
+}

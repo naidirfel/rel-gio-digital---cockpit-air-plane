@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#1a1a1a" rx="80"/>
+  
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#00ff00" stroke-width="8" opacity="0.8"/>
+  
+  <!-- Inner display background -->
+  <rect x="80" y="180" width="352" height="120" fill="#000" stroke="#00ff00" stroke-width="3" rx="15"/>
+  
+  <!-- Digital time display -->
+  <text x="256" y="240" text-anchor="middle" fill="#00ff00" font-family="monospace" font-size="48" font-weight="bold">12:34</text>
+  <text x="256" y="270" text-anchor="middle" fill="#00cccc" font-family="monospace" font-size="16">COCKPIT WATCH</text>
+  
+  <!-- Instrument indicators -->
+  <g transform="translate(120, 350)">
+    <rect width="80" height="40" fill="#222" stroke="#666" stroke-width="2" rx="5"/>
+    <text x="40" y="15" text-anchor="middle" fill="#888" font-family="monospace" font-size="8">ALT</text>
+    <text x="40" y="30" text-anchor="middle" fill="#00cccc" font-family="monospace" font-size="12">10000</text>
+  </g>
+  
+  <g transform="translate(216, 350)">
+    <rect width="80" height="40" fill="#222" stroke="#666" stroke-width="2" rx="5"/>
+    <text x="40" y="15" text-anchor="middle" fill="#888" font-family="monospace" font-size="8">HDG</text>
+    <text x="40" y="30" text-anchor="middle" fill="#00cccc" font-family="monospace" font-size="12">090°</text>
+  </g>
+  
+  <g transform="translate(312, 350)">
+    <rect width="80" height="40" fill="#222" stroke="#666" stroke-width="2" rx="5"/>
+    <text x="40" y="15" text-anchor="middle" fill="#888" font-family="monospace" font-size="8">SPD</text>
+    <text x="40" y="30" text-anchor="middle" fill="#00cccc" font-family="monospace" font-size="12">250</text>
+  </g>
+  
+  <!-- Control buttons -->
+  <g transform="translate(80, 420)">
+    <rect width="60" height="25" fill="#333" stroke="#555" stroke-width="1" rx="3"/>
+    <text x="30" y="17" text-anchor="middle" fill="#fff" font-family="monospace" font-size="8">MODE</text>
+  </g>
+  
+  <g transform="translate(150, 420)">
+    <rect width="60" height="25" fill="#333" stroke="#555" stroke-width="1" rx="3"/>
+    <text x="30" y="17" text-anchor="middle" fill="#fff" font-family="monospace" font-size="8">SET</text>
+  </g>
+  
+  <g transform="translate(302, 420)">
+    <rect width="60" height="25" fill="#333" stroke="#555" stroke-width="1" rx="3"/>
+    <text x="30" y="17" text-anchor="middle" fill="#fff" font-family="monospace" font-size="8">START</text>
+  </g>
+  
+  <g transform="translate(372, 420)">
+    <rect width="60" height="25" fill="#333" stroke="#555" stroke-width="1" rx="3"/>
+    <text x="30" y="17" text-anchor="middle" fill="#fff" font-family="monospace" font-size="8">RESET</text>
+  </g>
+  
+  <!-- Status LEDs -->
+  <circle cx="450" cy="120" r="8" fill="#00aa00" opacity="0.8"/>
+  <text x="450" y="140" text-anchor="middle" fill="#888" font-family="monospace" font-size="8">ALARM</text>
+  
+  <circle cx="450" cy="160" r="8" fill="#222" stroke="#444" stroke-width="1"/>
+  <text x="450" y="180" text-anchor="middle" fill="#888" font-family="monospace" font-size="8">TIMER</text>
+  
+  <!-- Scanning line effect -->
+  <line x1="80" y1="220" x2="432" y2="220" stroke="#00ff00" stroke-width="1" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+  </line>
+  
+  <!-- Corner details -->
+  <path d="M 60 60 L 80 60 L 80 80" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.6"/>
+  <path d="M 452 60 L 432 60 L 432 80" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.6"/>
+  <path d="M 60 452 L 80 452 L 80 432" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.6"/>
+  <path d="M 452 452 L 432 452 L 432 432" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.6"/>
+</svg>
