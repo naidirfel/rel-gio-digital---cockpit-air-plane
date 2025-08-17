@@ -150,4 +150,4 @@ Contribuições são bem-vindas! Algumas ideias para melhorias:
 
 ---
 
-**Desenvolvido com ❤️ para entusiastas da aviação**
+**Desenvolvido com ❤️ love para entusiastas da aviação**
